@@ -5,56 +5,56 @@
 #include <iomanip>
 using namespace std;
 
+
 int main(void)
 {
 	setlocale(LC_CTYPE, "");
-	int i, j, n, m, summ, sred[50];
-	printf("Введите размерность массива\n");
+
+	int i, j, n, summ, sr[50];
+
+	cout << "Введите размерность массива: \n";
 	cin >> n;
-	cin >> m;
+	cout << "Введите матрицу: \n";
 	int** arr = new int* [n];
-	for (i = 0; i < n; i++)
-		arr[i] = new int[m];
-	for (i = 0; i < n; i++)
-	{
-		for (j = 0; j < m; j++)
-		{
-			printf("Введите [%d][%d] элемент массива\n", i + 1, j + 1);
-			cin >> arr[i][j];
-		}
+	for (int i = 0; i < n; i++) {
+
+		arr[i] = new int[n];
+		for (int j = 0; j < n; j++)  cin >> arr[i][j];
+
 	}
 
-	for (i = 0; i < n; i++)
-	{
+	for (i = 0; i < n; i++) {
+
 		summ = 0;
-		for (j = 0; j < m; j++)
+		for (j = 0; j < n; j++)
 		{
 			summ += arr[i][j];
 		}
-		sred[i] = summ / m;
+		sr[i] = summ / n;
 	}
 
-	printf("Массив a:\n");
+	cout << "Массив a:\n";
 	for (i = 0; i < n; i++)
 	{
-		for (j = 0; j < m; j++)
+		for (j = 0; j < n; j++)
 		{
-			printf("%d ", arr[i][j]);
-			if (j == m - 1)
+			cout << arr[i][j] << " ";
+			if (j == n - 1)
 			{
-				printf("\n");
+				cout << "\n";
 			}
 		}
 	}
 
 	for (i = 0; i < n; i++)
-		printf("Среднее значение %d строки:%d\n", i + 1, sred[i]);
-	for (i = 0; i < n; i++)
-		for (j = i + 1; j < m; j++)
+		cout << "Среднее значение " << i + 1 << " строки: " << sr[i] << "\n";
+	for (i = 0; i < n; i++) {
+		cout << "\n";
+		for (j = i + 1; j < n; j++)
 		{
-			if (sred[i] == sred[j])
-				printf("Совпадают %d и %d строки\n", i + 1, j + 1);
+			if (sr[i] == sr[j])
+				cout << "Совпадают " << i + 1 << " и " << j + 1 << " строки\n";
 		}
-
+	}
 	delete[] arr;
 }
