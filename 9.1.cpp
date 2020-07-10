@@ -57,4 +57,5 @@ int main(void)
 		}
 	}
 	delete[] arr;
+	cout << "Сдача практики";
 }
